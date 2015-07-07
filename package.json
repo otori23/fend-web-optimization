@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/otori23/fend-web-optimization/issues"
   },
-  "homepage": "https://github.com/otori23/fend-web-optimization#readme"
+  "homepage": "https://github.com/otori23/fend-web-optimization#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }
