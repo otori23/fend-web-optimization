@@ -1,5 +1,5 @@
 move original project documents to src folder in git repository
-install gulp file build system
+install gulp file build system, mention how to install and the dependencies i.e. ImageMagick or GraphicsMagick
 
 Part 1: Optimize PageSpeed Insights score for index.html
 
