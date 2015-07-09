@@ -7,6 +7,9 @@ var gutil = require('gulp-util');
 var minifyCss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var minifyHtml = require('gulp-minify-html');
+var html5Lint = require('gulp-html5-lint');
+var csslint = require('gulp-csslint');
+var jshint = require('gulp-jshint');
 
 var del = require('del');
 var runSequence = require('run-sequence');
@@ -30,18 +33,23 @@ gulp.task('images', function(cb) {
 
 gulp.task('html', function() {
 	return gulp.src('src/**/*.html')
+		.pipe(html5Lint())
 		.pipe(environment === 'production' ? minifyHtml() : gutil.noop())
 		.pipe(gulp.dest(''));
 });
 
 gulp.task('styles', function() {
 	return gulp.src('src/**/*.css')
+		.pipe(csslint())
+		.pipe(csslint.reporter())
 		.pipe(environment === 'production' ? minifyCss() : gutil.noop())
 		.pipe(gulp.dest(''));
 });
 
 gulp.task('scripts', function() {
 	return gulp.src('src/**/*.js')
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'))
 		.pipe(environment === 'production' ? uglify() : gutil.noop())
 		.pipe(gulp.dest(''));
 });
