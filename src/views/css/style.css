@@ -33,6 +33,9 @@ form {
   position: fixed;
   width: 256px;
   z-index: -1;
+
+  /* put .mover elements on their own layer; i.e. for hardware acceleration */
+  will-change: transform;
 }
 
 .randomPizzaContainer {

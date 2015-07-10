@@ -424,6 +424,8 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
 	var newWidth = 0;
+
+	// determine pizza size using switch statement
 	switch(size) {
         case "1":
           newWidth = 25;
@@ -438,8 +440,8 @@ var resizePizzas = function(size) {
           console.log("bug in sizeSwitcher");
     }
 
+	// cache results of document.querySelectorAll(".randomPizzaContainer") outside of for-loop
 	var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
-    
 	for (var i = 0; i < randomPizzas.length; i++) {
       randomPizzas[i].style.width = newWidth + "%";
     }
@@ -491,6 +493,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
+  // cache results of document.body.scrollTop outside of the for-loop
   var scrollTop = document.body.scrollTop;
   for (var i = 0; i < slidingPizzaItems.length; i++) {
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
@@ -514,7 +517,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  var numSlidingPizzas = 50;
+  var numSlidingPizzas = 50; // reduce number of moving pizzas from 200 to 50
   for (var i = 0; i < numSlidingPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
@@ -524,6 +527,9 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
 	document.querySelector("#movingPizzas1").appendChild(elem);
+
+	// cache img element of moving pizzas in an array for later use 
+	// in scroll event handler, updatePositions
 	slidingPizzaItems.push(elem);
   }
   updatePositions();
