@@ -6,7 +6,7 @@ var imageop = require('gulp-image-optimization');
 var gutil = require('gulp-util');
 var minifyCss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
-var minifyHtml = require('gulp-minify-html');
+var htmlmin = require('gulp-html-minifier');
 
 var del = require('del');
 var runSequence = require('run-sequence');
@@ -29,9 +29,15 @@ gulp.task('images', function(cb) {
 });
 
 gulp.task('html', function() {
+	var opts = {
+		collapseWhitespace: true,
+		minifyJS: true,
+		minifyCSS: true
+	};
+
 	return gulp.src('src/**/*.html')
-		.pipe(environment === 'production' ? minifyHtml() : gutil.noop())
-		.pipe(gulp.dest(''));
+		.pipe(environment === 'production' ? htmlmin(opts) : gutil.noop())
+		.pipe(gulp.dest(''))
 });
 
 gulp.task('styles', function() {
