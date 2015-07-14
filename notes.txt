@@ -1,0 +1,76 @@
+
+1) Using python's built-in web server as local dev/test server
+
+2) Will expose the local web server over the internet using ngork
+
+3) ngork - https://ngrok.com/
+- exposes a local server behind a NAT or firewall to the internet
+- creates a secure public URL (https://yourapp.ngrok.io) to a local webserver on your machine
+
+3a) ngork process
+- fire up a local web server on your machine
+- install ngork on your local machine
+- remote user makes a request to https://yourapp.ngork.com - i.e. to ngork servers 
+- ngork server knows how to communicate via tcp to ngork component on your local machine
+- ngork component on your local machine acts at communication gateaway between your local web server and ngork's server
+
+4) WebHooks - web app events
+- basically events exposed by web apps; 
+- remote machines register handlers by making http request to web app
+- web invokes handlers by making http request to remote machine 
+
+- say there is an app running on a web server somewhere
+- this app exposes events
+- can implement event handlers on your local machine (typically on a machine accessible on internet)
+- use ngork to make you local machine (with event handlers) accessible on the internet
+
+- your event handlers use an http request to register with web app
+- the web app calls the event handlers using http request (typically POST) to local machine via ngork
+
+4a) Wiki
+A webhook in web development is a method of augmenting or altering the behavior of a web page, or web application, with custom callbacks. These callbacks may be maintained, modified, and managed by third-party users and developers who may not necessarily be affiliated with the originating website or application. The term "webhook" was coined by Jeff Lindsay in 2007 from the computer programming term Hook
+
+5) JSHint - http://jshint.com/
+- a community-driven tool to detect errors and potential problems in JavaScript code and to enforce your team's coding conventions. 
+- it is very flexible so you can easily adjust it to your particular coding guidelines and the environment you expect your code to execute in. 
+- JSHint is open source and will always stay this way.
+- JSHint scans a program written in JavaScript and reports about commonly made mistakes and potential bugs.
+- The potential problem could be a syntax error, a bug due to implicit type conversion, a leaking variable or something else.
+
+5a) JSHint creator
+- Anton Kovalyov
+- http://anton.kovalyov.net/
+- wrote two books
+- use as model for own: portfolio page, books, etc
+
+5b) More
+https://sendgrid.com/blog/whats-webhook/
+
+6) Code Profiling
+6a) Auditing
+
+7) PageSpeed Insights - initial score
+- Mobile: 28/100
+- Desktop: 90/100
+https://developers.google.com/speed/pagespeed/ 
+
+8) Still need to clean up other items on page speed insight.
+- Finish optimization section of google developers web fundamental
+- Enable Compression
+- Enable Browser Caching
+- build/automation tools 
+
+9) Pizzeria fps
+
+- in browser render opt lesson 5 -  Causes of Forced Synchronous Layout
+- Paul shows that FSL is causing the frame generation to be below 30 fps 
+- on amination acheived by scrolling the page
+- so probably accessing geometric properties (layout), and ...
+- then changle a style (recalculate styles -> layout) in a loop
+- fix this by accessing properties outside of loop, then batch style changes
+
+9a) Slider bar
+
+- changes pizza sizes
+- optimized this in last quiz of lesson 5
+- implemented and committed changes in source code
